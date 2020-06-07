@@ -6,52 +6,52 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    class ConteinerOfAnimals
+    class ConteinerOfFilms
     {
         //хралинилище для объектов класса
-        private List<Films> _animals = new List<Films>();
+        private List<Films> _films = new List<Films>();
         //индексатор для хранилища (можно обращаться по индексу)
         public Films this[int index]
         {
             get
             {
-                return _animals[index];
+                return _films[index];
             }
             set
             {
-                _animals[index] = value;
+                _films[index] = value;
             }
         }
         //методы для работы с хранилищем
         //метод добавления объекта класса в хранилище
-        public void AddAnimal(Films animal)
+        public void AddFilm(Films film)
         {
-            _animals.Add(animal);
+            _films.Add(film);
         }
         //метод удаления объекта класса из хралилища по индексу
-        public void RemoveAnimal(int index)
+        public void RemoveFilm(int index)
         {
-            _animals.RemoveAt(index);
+            _films.RemoveAt(index);
         }
         // метод возвращения хранилища
-        public List<Films> GetAnimals()
+        public List<Films> GetFilms()
         {
-            return _animals;
+            return _films;
         }
         //очищение хралилища
-        public void ClearAnimals()
+        public void ClearFilms()
         {
-            _animals.Clear();
+            _films.Clear();
         }
         //возвращение объекта класса из хранилища по индексу
-        public Films GetAnimal(int index)
+        public Films GetFilm(int index)
         {
-            return _animals[index];
+            return _films[index];
         }
         //подсчёт количества объектов класса в хранилище
-        public int AnimalsCount()
+        public int FilmsCount()
         {
-            return _animals.Count();
+            return _films.Count();
         }
     }
 }

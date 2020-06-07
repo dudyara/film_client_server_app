@@ -14,7 +14,7 @@ namespace Server
         private UdpClient udpClient_S;
         private int port;
 
-        private ConteinerOfAnimals Conteiner = new ConteinerOfAnimals();
+        private ConteinerOfFilms Conteiner = new ConteinerOfFilms();
         private char separator = ';';
         private char separator1 = '\n';
         //private string Heads = "Вид животного;Кличка;возраст;среда обитания;наличие потомства";
@@ -57,7 +57,7 @@ namespace Server
                         LoadFromDatabase();
                         Console.WriteLine("Загрузка данных из БД");
                         string otvet = "";
-                        for (int i = 0; i < Conteiner.AnimalsCount(); i++)
+                        for (int i = 0; i < Conteiner.FilmsCount(); i++)
                         {
                             otvet = otvet + Conteiner[i].Name + ";" + Conteiner[i].Director + ";" + Conteiner[i].Country +
                                 ";" + Conteiner[i].Year.ToString() + ";" + Conteiner[i].Cost.ToString() + ";"
@@ -66,7 +66,7 @@ namespace Server
                         byte[] byteOtvet = Encoding.Unicode.GetBytes(otvet);
                         udpClient_S.SendAsync(byteOtvet, byteOtvet.Length, ep);
 
-                        Conteiner.ClearAnimals();
+                        Conteiner.ClearFilms();
                         logger.Info("Выполнена операция вывода всех данных на экран\n");
                         Console.WriteLine("Данные загружены");
                         break;
@@ -75,7 +75,7 @@ namespace Server
                 case 2:
                     {
                         AnimalMessage[0] = AnimalMessage[0].Remove(0, 2);
-                        Conteiner.ClearAnimals();
+                        Conteiner.ClearFilms();
                         Console.WriteLine("Сохранение изменений В БД");
                         
                         using (FilmContext db = new FilmContext())
@@ -126,7 +126,7 @@ namespace Server
                 var animals = db.Animals;
                 foreach (Films u in animals)
                 {
-                    Conteiner.AddAnimal(u);
+                    Conteiner.AddFilm(u);
                 }
             }
         }
