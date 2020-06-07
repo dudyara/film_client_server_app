@@ -21,9 +21,9 @@ namespace Lab4
         }
         //методы для работы с хранилищем
         //метод добавления объекта класса в хранилище
-        public void AddFilm(Films animal)
+        public void AddFilm(Films film)
         {
-            _films.Add(animal);
+            _films.Add(film);
         }
         //метод удаления объекта класса из хралилища по индексу
         public void RemoveFilm(int index)
