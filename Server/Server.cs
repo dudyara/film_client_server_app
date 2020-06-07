@@ -14,7 +14,7 @@ namespace Server
         private UdpClient udpClient_S;
         private int port;
 
-        private ConteinerOfFilms Conteiner = new ConteinerOfFilms();
+        private ContainerOfFilms Conteiner = new ContainerOfFilms();
         private char separator = ';';
         private char separator1 = '\n';
         //private string Heads = "Вид животного;Кличка;возраст;среда обитания;наличие потомства";

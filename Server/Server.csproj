@@ -78,7 +78,7 @@
   <ItemGroup>
     <Compile Include="FilmContext.cs" />
     <Compile Include="Films.cs" />
-    <Compile Include="ConteinerOfFilms.cs" />
+    <Compile Include="ContainerOfFilms.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

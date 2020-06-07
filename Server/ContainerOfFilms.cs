@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    class ConteinerOfFilms
+    class ContainerOfFilms
     {
         //хралинилище для объектов класса
         private List<Films> _films = new List<Films>();
