@@ -14,17 +14,15 @@ namespace Server
         private UdpClient udpClient_S;
         private int port;
 
-        private ContainerOfFilms Conteiner = new ContainerOfFilms();
+        private ContainerOfFilms Container = new ContainerOfFilms();
         private char separator = ';';
         private char separator1 = '\n';
-        //private string Heads = "Вид животного;Кличка;возраст;среда обитания;наличие потомства";
         private Logger logger = LogManager.GetCurrentClassLogger();
 
         public Server(int _port)
         {
             udpClient_S = new UdpClient(_port);
             this.port = _port;
-            //LoadFromDatabase();
             Console.WriteLine("Сервер работает");
         }
 
@@ -35,9 +33,7 @@ namespace Server
                 allDone.Reset();
                 udpClient_S.BeginReceive(RequestCallback, udpClient_S);
                 allDone.WaitOne();
-
             }
-
         }
 
 
@@ -57,16 +53,16 @@ namespace Server
                         LoadFromDatabase();
                         Console.WriteLine("Загрузка данных из БД");
                         string otvet = "";
-                        for (int i = 0; i < Conteiner.FilmsCount(); i++)
+                        for (int i = 0; i < Container.FilmsCount(); i++)
                         {
-                            otvet = otvet + Conteiner[i].Name + ";" + Conteiner[i].Director + ";" + Conteiner[i].Country +
-                                ";" + Conteiner[i].Year.ToString() + ";" + Conteiner[i].Cost.ToString() + ";"
-                                + Conteiner[i].Gain.ToString() + ";" + Conteiner[i].Oscared.ToString() + "\n" ;
+                            otvet = otvet + Container[i].Name + ";" + Container[i].Director + ";" + Container[i].Country +
+                                ";" + Container[i].Year.ToString() + ";" + Container[i].Cost.ToString() + ";"
+                                + Container[i].Gain.ToString() + ";" + Container[i].Oscared.ToString() + "\n" ;
                         }
                         byte[] byteOtvet = Encoding.Unicode.GetBytes(otvet);
                         udpClient_S.SendAsync(byteOtvet, byteOtvet.Length, ep);
 
-                        Conteiner.ClearFilms();
+                        Container.ClearFilms();
                         logger.Info("Выполнена операция вывода всех данных на экран\n");
                         Console.WriteLine("Данные загружены");
                         break;
@@ -75,7 +71,7 @@ namespace Server
                 case 2:
                     {
                         FilmMessage[0] = FilmMessage[0].Remove(0, 2);
-                        Conteiner.ClearFilms();
+                        Container.ClearFilms();
                         Console.WriteLine("Сохранение изменений В БД");
                         
                         using (FilmContext db = new FilmContext())
@@ -126,7 +122,7 @@ namespace Server
                 var films = db.Films;
                 foreach (Films u in films)
                 {
-                    Conteiner.AddFilm(u);
+                    Container.AddFilm(u);
                 }
             }
         }

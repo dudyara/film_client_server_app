@@ -21,8 +21,8 @@
         <DataGrid x:Name="filmGrid" ItemsSource ="{Binding Conteiner}" AutoGenerateColumns="True"  AutoGeneratingColumn="DG1_AutoGeneratingColumn" HorizontalGridLinesBrush="DarkGray"
                   RowBackground="LightGray" AlternatingRowBackground="White" Margin="0,0,0,02" Grid.RowSpan="2"/>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="237,257,225,0" Width="330" Grid.Row="1">
-            <Button x:Name="OpenButton" Content="Загрузить" Click="OpenButton_Clik" Width="120" Margin="5,20,40,0"/>
-            <Button x:Name="SaveButton" Content="Сохранить" Click="SaveButton_Clic" Width="120" Margin="40,20,0,0" RenderTransformOrigin="0.891,0.544" />
+            <Button x:Name="OpenButton" Content="Загрузить" Click="OpenButton_Click" Width="120" Margin="5,20,40,0"/>
+            <Button x:Name="SaveButton" Content="Сохранить" Click="SaveButton_Click" Width="120" Margin="40,20,0,0" RenderTransformOrigin="0.891,0.544" />
         </StackPanel>
 
     </Grid>

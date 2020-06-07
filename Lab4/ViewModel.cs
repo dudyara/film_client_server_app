@@ -15,7 +15,7 @@ namespace Lab4
 
         }  
         
-        public void LoadConteiner()
+        public void LoadContainer()
         {
             ListOfFilms listOfFilms = Model.LoadMethod();
             for (int i = 0; i < listOfFilms.FilmsCount(); i++)
@@ -25,7 +25,7 @@ namespace Lab4
             
         }
 
-        public void SaveConteiner()
+        public void SaveContainer()
         {
             ListOfFilms listOfFilms = new ListOfFilms();
             for (int i = 0; i < Conteiner.Count(); i++)

@@ -20,16 +20,16 @@ namespace Lab4
         
 
         //нажатие кнопки загрузить
-        private void OpenButton_Clik(object sender, RoutedEventArgs e)
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
-            NM.LoadConteiner();
+            NM.LoadContainer();
         }
 
         //Нажатие кнопки сохранить
-        private void SaveButton_Clic(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
 
-            NM.SaveConteiner();
+            NM.SaveContainer();
         }
 
         //атоматическая генерация заголовков
