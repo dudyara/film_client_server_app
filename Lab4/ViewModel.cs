@@ -7,34 +7,32 @@ namespace Lab4
     class ViewModel
     {
         public ObservableCollection<Films> Conteiner { get; set; }
-        //public List<Animals> Conteiner { get; set; }
 
 
         public ViewModel()
         {
             Conteiner = new ObservableCollection<Films>();
-            //Conteiner = new List<Animals>();
 
         }  
         
         public void LoadConteiner()
         {
-            ListOfFilms listOfAnimals = Model.LoadMethod();
-            for (int i = 0; i < listOfAnimals.FilmsCount(); i++)
+            ListOfFilms listOfFilms = Model.LoadMethod();
+            for (int i = 0; i < listOfFilms.FilmsCount(); i++)
             {
-                Conteiner.Add(listOfAnimals[i]);
+                Conteiner.Add(listOfFilms[i]);
             }
             
         }
 
         public void SaveConteiner()
         {
-            ListOfFilms listOfAnimals = new ListOfFilms();
+            ListOfFilms listOfFilms = new ListOfFilms();
             for (int i = 0; i < Conteiner.Count(); i++)
             {
-                listOfAnimals.AddFilm(Conteiner[i]);
+                listOfFilms.AddFilm(Conteiner[i]);
             }
-            Model.SaveMethod(listOfAnimals);
+            Model.SaveMethod(listOfFilms);
         }
 
 
