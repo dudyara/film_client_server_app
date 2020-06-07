@@ -76,7 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnimalContext.cs" />
+    <Compile Include="FilmContext.cs" />
     <Compile Include="Films.cs" />
     <Compile Include="ConteinerOfAnimals.cs" />
     <Compile Include="Server.cs" />

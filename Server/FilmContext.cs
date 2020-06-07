@@ -7,9 +7,9 @@ using System.Data.Entity;
 
 namespace Server
 {
-    class AnimalContext : DbContext
+    class FilmContext : DbContext
     {
-        public AnimalContext() : base("DBConnection")
+        public FilmContext() : base("DBConnection")
         { }
         public DbSet<Films> Animals { get; set; }
     }

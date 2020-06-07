@@ -78,7 +78,7 @@ namespace Server
                         Conteiner.ClearAnimals();
                         Console.WriteLine("Сохранение изменений В БД");
                         
-                        using (AnimalContext db = new AnimalContext())
+                        using (FilmContext db = new FilmContext())
                         {
                             db.Database.ExecuteSqlCommand("Delete from Films");
                             for (int i = 0; i < AnimalMessage.Length - 1; i++)
@@ -120,7 +120,7 @@ namespace Server
         //считывание из БД
         private void LoadFromDatabase()
         {
-            using (AnimalContext db = new AnimalContext())
+            using (FilmContext db = new FilmContext())
             {
 
                 var animals = db.Animals;
