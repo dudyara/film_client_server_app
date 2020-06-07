@@ -47,8 +47,8 @@ namespace Server
             var listener = (UdpClient)ar.AsyncState;
             var ep = (IPEndPoint)udpClient_S.Client.LocalEndPoint;
             var res = listener.EndReceive(ar, ref ep);
-            string[] AnimalMessage = Encoding.Unicode.GetString(res).Split(separator1);
-            string[] message = AnimalMessage[0].Split(separator);
+            string[] FilmMessage = Encoding.Unicode.GetString(res).Split(separator1);
+            string[] message = FilmMessage[0].Split(separator);
 
             switch (ushort.Parse(message[0]))
             {
@@ -74,21 +74,21 @@ namespace Server
                
                 case 2:
                     {
-                        AnimalMessage[0] = AnimalMessage[0].Remove(0, 2);
+                        FilmMessage[0] = FilmMessage[0].Remove(0, 2);
                         Conteiner.ClearFilms();
                         Console.WriteLine("Сохранение изменений В БД");
                         
                         using (FilmContext db = new FilmContext())
                         {
                             db.Database.ExecuteSqlCommand("Delete from Films");
-                            for (int i = 0; i < AnimalMessage.Length - 1; i++)
+                            for (int i = 0; i < FilmMessage.Length - 1; i++)
                             {
-                                Films animal = new Films(AnimalMessage[i].Split(separator)[0], 
-                                    AnimalMessage[i].Split(separator)[1], AnimalMessage[i].Split(separator)[2],
-                                    int.Parse(AnimalMessage[i].Split(separator)[3]), 
-                                    int.Parse(AnimalMessage[i].Split(separator)[4]),
-                                    int.Parse(AnimalMessage[i].Split(separator)[5]), bool.Parse(AnimalMessage[i].Split(separator)[6]));
-                                db.Animals.Add(animal);
+                                Films film = new Films(FilmMessage[i].Split(separator)[0],
+                                    FilmMessage[i].Split(separator)[1], FilmMessage[i].Split(separator)[2],
+                                    int.Parse(FilmMessage[i].Split(separator)[3]), 
+                                    int.Parse(FilmMessage[i].Split(separator)[4]),
+                                    int.Parse(FilmMessage[i].Split(separator)[5]), bool.Parse(FilmMessage[i].Split(separator)[6]));
+                                db.Films.Add(film);
                                 db.SaveChanges();
                             }
                             
@@ -123,8 +123,8 @@ namespace Server
             using (FilmContext db = new FilmContext())
             {
 
-                var animals = db.Animals;
-                foreach (Films u in animals)
+                var films = db.Films;
+                foreach (Films u in films)
                 {
                     Conteiner.AddFilm(u);
                 }

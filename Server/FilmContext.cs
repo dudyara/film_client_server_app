@@ -11,6 +11,6 @@ namespace Server
     {
         public FilmContext() : base("DBConnection")
         { }
-        public DbSet<Films> Animals { get; set; }
+        public DbSet<Films> Films { get; set; }
     }
 }
