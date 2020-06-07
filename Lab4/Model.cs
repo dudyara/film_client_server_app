@@ -16,30 +16,30 @@ namespace Lab4
             char separator = ';';
             string send = "1";
             SendMessage(send);
-            string[] AnimalMessage = ReceiveMessage().Split(separator1);
-            ListOfFilms listOfAnimals = new ListOfFilms();
+            string[] FilmMessage = ReceiveMessage().Split(separator1);
+            ListOfFilms ListOfFilms = new ListOfFilms();
 
-            for (int i = 0; i < AnimalMessage.Length - 1; i++)
+            for (int i = 0; i < FilmMessage.Length - 1; i++)
             {
-                Films animal = new Films(AnimalMessage[i].Split(separator)[0],
-                    AnimalMessage[i].Split(separator)[1],AnimalMessage[i].Split(separator)[2],
-                    int.Parse(AnimalMessage[i].Split(separator)[3]), int.Parse(AnimalMessage[i].Split(separator)[4]),
-                    int.Parse(AnimalMessage[i].Split(separator)[5]), bool.Parse(AnimalMessage[i].Split(separator)[6]));
-                listOfAnimals.AddFilm(animal);
+                Films film = new Films(FilmMessage[i].Split(separator)[0],
+                    FilmMessage[i].Split(separator)[1], FilmMessage[i].Split(separator)[2],
+                    int.Parse(FilmMessage[i].Split(separator)[3]), int.Parse(FilmMessage[i].Split(separator)[4]),
+                    int.Parse(FilmMessage[i].Split(separator)[5]), bool.Parse(FilmMessage[i].Split(separator)[6]));
+                ListOfFilms.AddFilm(film);
             }
-            return listOfAnimals;
+            return ListOfFilms;
         }
 
         //метод для сохранения данных
-        public static void SaveMethod(ListOfFilms listOfAnimals)
+        public static void SaveMethod(ListOfFilms ListOfFilms)
         {
             string message = "";
-            for (int i = 0; i < listOfAnimals.FilmsCount(); i++)
+            for (int i = 0; i < ListOfFilms.FilmsCount(); i++)
             {
-                message = message + listOfAnimals[i].Name + ";" + listOfAnimals[i].Director + ";" +
-                    listOfAnimals[i].Country + ";" + listOfAnimals[i].Year + ";" +
-                    listOfAnimals[i].Cost.ToString() + ";" + listOfAnimals[i].Gain.ToString() + 
-                    ";" + listOfAnimals[i].Oscared.ToString() + "\n";
+                message = message + ListOfFilms[i].Name + ";" + ListOfFilms[i].Director + ";" +
+                    ListOfFilms[i].Country + ";" + ListOfFilms[i].Year + ";" +
+                    ListOfFilms[i].Cost.ToString() + ";" + ListOfFilms[i].Gain.ToString() + 
+                    ";" + ListOfFilms[i].Oscared.ToString() + "\n";
             }
             SendMessage("2;" + message);
         }
