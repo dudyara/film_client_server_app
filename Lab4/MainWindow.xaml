@@ -18,7 +18,7 @@
             <RowDefinition Height="75*"/>
             <RowDefinition Height="344*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="filmGrid" ItemsSource ="{Binding Conteiner}" AutoGenerateColumns="True"  AutoGeneratingColumn="DG1_AutoGeneratingColumn" HorizontalGridLinesBrush="DarkGray"
+        <DataGrid x:Name="filmGrid" ItemsSource ="{Binding Container}" AutoGenerateColumns="True"  AutoGeneratingColumn="DG1_AutoGeneratingColumn" HorizontalGridLinesBrush="DarkGray"
                   RowBackground="LightGray" AlternatingRowBackground="White" Margin="0,0,0,02" Grid.RowSpan="2"/>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="237,257,225,0" Width="330" Grid.Row="1">
             <Button x:Name="OpenButton" Content="Загрузить" Click="OpenButton_Click" Width="120" Margin="5,20,40,0"/>

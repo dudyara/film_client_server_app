@@ -6,12 +6,12 @@ namespace Lab4
 {
     class ViewModel
     {
-        public ObservableCollection<Films> Conteiner { get; set; }
+        public ObservableCollection<Films> Container { get; set; }
 
 
         public ViewModel()
         {
-            Conteiner = new ObservableCollection<Films>();
+            Container = new ObservableCollection<Films>();
 
         }  
         
@@ -20,7 +20,7 @@ namespace Lab4
             ListOfFilms listOfFilms = Model.LoadMethod();
             for (int i = 0; i < listOfFilms.FilmsCount(); i++)
             {
-                Conteiner.Add(listOfFilms[i]);
+                Container.Add(listOfFilms[i]);
             }
             
         }
@@ -28,9 +28,9 @@ namespace Lab4
         public void SaveContainer()
         {
             ListOfFilms listOfFilms = new ListOfFilms();
-            for (int i = 0; i < Conteiner.Count(); i++)
+            for (int i = 0; i < Container.Count(); i++)
             {
-                listOfFilms.AddFilm(Conteiner[i]);
+                listOfFilms.AddFilm(Container[i]);
             }
             Model.SaveMethod(listOfFilms);
         }
